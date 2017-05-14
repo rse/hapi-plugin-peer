@@ -26,8 +26,12 @@
 var Package = require("./package.json")
 
 /*  determine the peer identification (<address>:<port>) for a HAPI request  */
-const peerFromRequest = (request) => {
+const peerOfRequest = (request) => {
     let peer
+
+    /*  sanity check argument  */
+    if (typeof request !== "object")
+        throw new Error("invalid Request object")
 
     /*  attempt 1: via high-level HAPI information
         (usually for HAPI standard request objects)  */
