@@ -65,12 +65,8 @@ var register = function (server, options, next) {
 
     /*  decorate the request object  */
     server.decorate("request", "peer", (requestImplicit) => {
-        return (requestExplicit) => {
-            if (requestExplicit)
-                peerOfRequest(requestExplicit)
-            else
-                peerOfRequest(requestImplicit)
-        }
+        return (requestExplicit) =>
+            peerOfRequest(requestExplicit ? requestExplicit : requestImplicit)
     }, { apply: true })
 
     /*  continue processing  */
