@@ -32,17 +32,17 @@ const peerFromRequest = (request) => {
     /*  attempt 1: via high-level HAPI information
         (usually for HAPI standard request objects)  */
     if (   peer === undefined
-               && typeof request.info === "object"
-               && request.info.remoteAddress
-               && request.info.remotePort   )
+        && typeof request.info === "object"
+        && request.info.remoteAddress
+        && request.info.remotePort         )
         peer = `${request.info.remoteAddress}:${request.info.remotePort}`
 
     /*  attempt 2: via low-level Socket information
         (usually for WebSocket upgrade request objects)  */
     if (   peer === undefined
-               && typeof request.socket === "object"
-               && request.socket.remoteAddress
-               && request.socket.remotePort         )
+        && typeof request.socket === "object"
+        && request.socket.remoteAddress
+        && request.socket.remotePort         )
         peer = `${request.socket.remoteAddress}:${request.socket.remotePort}`
 
     /*  fallback peer identifier  */

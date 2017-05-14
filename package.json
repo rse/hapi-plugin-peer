@@ -1,24 +1,24 @@
 {
-    "name":        "hapi-plugin-traffic",
-    "version":     "0.9.4",
-    "description": "HAPI plugin for network traffic accounting",
-    "keywords":    [ "hapi", "plugin", "network", "traffic", "accounting" ],
-    "main":        "./hapi-plugin-traffic.js",
+    "name":        "hapi-plugin-peer",
+    "version":     "0.9.0",
+    "description": "HAPI plugin for network peer identification",
+    "keywords":    [ "hapi", "plugin", "network", "peer", "identification" ],
+    "main":        "./hapi-plugin-peer.js",
     "license":     "MIT",
     "repository": {
         "type": "git",
-        "url":  "https://github.com/rse/hapi-plugin-traffic.git"
+        "url":  "https://github.com/rse/hapi-plugin-peer.git"
     },
     "author": {
         "name":  "Ralf S. Engelschall",
         "email": "rse@engelschall.com",
         "url":   "http://engelschall.com"
     },
-    "homepage": "https://github.com/rse/hapi-plugin-traffic",
-    "bugs":     "https://github.com/rse/hapi-plugin-traffic/issues",
+    "homepage": "https://github.com/rse/hapi-plugin-peer",
+    "bugs":     "https://github.com/rse/hapi-plugin-peer/issues",
     "dependencies": {
     },
     "engines": {
-        "node":        ">=4.0.0"
+        "node": ">=6.0.0"
     }
 }
