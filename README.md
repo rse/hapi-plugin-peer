@@ -22,17 +22,32 @@ About
 
 This is a very small plugin for the [HAPI](http://hapijs.com/) server
 framework for network peer identification. It decorates the HAPI server
-object with a `peer(request: Request): String` method and the HAPI
-request object with a `peer(request?: Request): String` method. The
-method just returns a string of format `<address>:<port>` which can be
-used to uniquely identify the direct network peer (the client or an
-intermediate proxy connecting to the server).
+object with a `peer(request: Request): Peer` method and the HAPI request
+object with a `peer(request?: Request): Peer` method. The method just
+returns a Peer object of format `{ addr: String, port: Number, id?:
+String }` which uniquely identifies the peer.
 
 Usage
 -----
 
 ```js
-server.register(require("hapi-plugin-peer"))
+server.register({
+    register: require("hapi-plugin-peer"),
+    options: {
+        peerId:     false,
+        cookieName: "PEERID",
+        cookieOptions: {
+            ttl:          null,   /*  session time-life               */
+            isSecure:     false,  /*  control cookie flag "Secure"    */
+            isHttpOnly:   false,  /*  control cookie flag "HttpOnly"  */
+            isSameSite:   "Lax",  /*  control cookie flag "SameSite"  */
+            path:         "/",    /*  cookie validity path            */
+            domain:       null,   /*  cookie validity domain          */
+            encoding:     "none", /*  cookie value encoding           */
+            strictHeader: true,   /*  strict cookie value handling    */
+        }
+    }
+})
 [...]
 server.on("onRequest", (request, reply) => {
     let peer = request.peer()
