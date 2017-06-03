@@ -18,7 +18,7 @@
     "bugs":     "https://github.com/rse/hapi-plugin-peer/issues",
     "dependencies": {
         "hoek":        "~4.1.1",
-        "pure-uuid":   "~1.4.5"
+        "pure-uuid":   "~1.4.6"
     },
     "engines": {
         "node":        ">=6.0.0"
