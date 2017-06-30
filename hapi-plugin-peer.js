@@ -100,7 +100,7 @@ var register = function (server, options, next) {
             path:         "/",    /*  cookie validity path            */
             domain:       null,   /*  cookie validity domain          */
             encoding:     "none", /*  cookie value encoding           */
-            strictHeader: true,   /*  strict cookie value handling    */
+            strictHeader: true    /*  strict cookie value handling    */
         }
     }, options, true)
 
