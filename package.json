@@ -16,11 +16,23 @@
     },
     "homepage": "https://github.com/rse/hapi-plugin-peer",
     "bugs":     "https://github.com/rse/hapi-plugin-peer/issues",
+    "devDependencies": {
+        "babel-eslint":            "~7.2.3",
+        "eslint":                  "~4.1.1",
+        "eslint-config-standard":  "~10.2.1",
+        "eslint-plugin-standard":  "~3.0.1",
+        "eslint-plugin-promise":   "~3.5.0",
+        "eslint-plugin-import":    "~2.6.1",
+        "eslint-plugin-node":      "~5.1.0"
+    },
     "dependencies": {
         "hoek":        "~4.1.1",
         "pure-uuid":   "~1.4.6"
     },
     "engines": {
         "node":        ">=6.0.0"
+    },
+    "scripts": {
+        "prepublishOnly": "eslint --config eslint.yaml hapi-plugin-peer.js"
     }
 }
