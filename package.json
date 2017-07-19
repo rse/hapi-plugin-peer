@@ -18,16 +18,16 @@
     "bugs":     "https://github.com/rse/hapi-plugin-peer/issues",
     "devDependencies": {
         "babel-eslint":            "~7.2.3",
-        "eslint":                  "~4.1.1",
+        "eslint":                  "~4.2.0",
         "eslint-config-standard":  "~10.2.1",
         "eslint-plugin-standard":  "~3.0.1",
         "eslint-plugin-promise":   "~3.5.0",
-        "eslint-plugin-import":    "~2.6.1",
-        "eslint-plugin-node":      "~5.1.0"
+        "eslint-plugin-import":    "~2.7.0",
+        "eslint-plugin-node":      "~5.1.1"
     },
     "dependencies": {
-        "hoek":        "~4.1.1",
-        "pure-uuid":   "~1.4.6"
+        "hoek":        "~4.2.0",
+        "pure-uuid":   "~1.4.7"
     },
     "engines": {
         "node":        ">=6.0.0"
