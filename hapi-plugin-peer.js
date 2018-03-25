@@ -23,11 +23,11 @@
 */
 
 /*  external dependencies  */
-var hoek    = require("hoek")
-var UUID    = require("pure-uuid")
+const hoek    = require("hoek")
+const UUID    = require("pure-uuid")
 
 /*  internal dependencies  */
-var Package = require("./package.json")
+const pkg     = require("./package.json")
 
 /*  determine the peer identification (<address>:<port>) for a HAPI request  */
 const peerOfRequest = (options, request) => {
@@ -87,7 +87,7 @@ const peerOfRequest = (options, request) => {
 }
 
 /*  the HAPI plugin register function  */
-var register = function (server, options, next) {
+const register = async (server, options) => {
     /*  determine plugin registration options  */
     options = hoek.applyToDefaults({
         peerId:     false,
@@ -110,7 +110,7 @@ var register = function (server, options, next) {
         server.state(options.cookieName, options.cookieOptions)
 
         /*  hook into the early request processing  */
-        server.ext("onPreAuth", (request, reply) => {
+        server.ext("onPreAuth", async (request, h) => {
             /*  check for existing peer id  */
             let peerId = request.state[options.cookieName]
             if (peerId === undefined) {
@@ -125,17 +125,17 @@ var register = function (server, options, next) {
 
             /*  provide result  */
             request.info.peerId = peerId
-            reply.continue()
+            return h.continue
         })
 
         /*  hook into the late request processing  */
-        server.ext("onPreResponse", (request, reply) => {
+        server.ext("onPreResponse", async (request, h) => {
             /*  send a new generated id to the peer  */
             if (request.plugins.peer && request.plugins.peer.sendPeerId) {
                 let peerId = request.info.peerId
-                reply.state(options.cookieName, peerId)
+                h.state(options.cookieName, peerId)
             }
-            reply.continue()
+            return h.continue
         })
     }
 
@@ -149,14 +149,13 @@ var register = function (server, options, next) {
         return (requestExplicit) =>
             peerOfRequest(options, requestExplicit ? requestExplicit : requestImplicit)
     }, { apply: true })
-
-    /*  continue processing  */
-    next()
 }
 
-/*  provide meta-information as expected by HAPI  */
-register.attributes = { pkg: Package }
-
 /*  export register function, wrapped in a plugin object  */
-module.exports = { register: register }
+module.exports = {
+    plugin: {
+        register: register,
+        pkg:      pkg
+    }
+}
 

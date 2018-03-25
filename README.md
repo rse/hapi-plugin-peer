@@ -49,14 +49,14 @@ server.register({
     }
 })
 [...]
-server.on("onRequest", (request, reply) => {
+server.on("onRequest", async (request, h) => {
     let peer = request.peer()
     ....
 })
 server.route({
     method: "POST",
     path:   "/foo",
-    config: {
+    options: {
         plugins: {
             websocket: {
                 connect: (wss, ws) => {
@@ -70,7 +70,7 @@ server.route({
             }
         }
     },
-    handler: (request, reply) => {
+    handler: async (request, reply) => {
         let peer = request.peer()
         ...
     }
