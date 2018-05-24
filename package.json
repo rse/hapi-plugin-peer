@@ -1,6 +1,6 @@
 {
     "name":        "hapi-plugin-peer",
-    "version":     "1.0.3",
+    "version":     "1.0.4",
     "description": "HAPI plugin for network peer identification",
     "keywords":    [ "hapi", "plugin", "network", "peer", "identification" ],
     "main":        "./hapi-plugin-peer.js",
