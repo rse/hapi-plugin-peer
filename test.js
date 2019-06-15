@@ -1,5 +1,5 @@
 
-const HAPI       = require("hapi")
+const HAPI       = require("@hapi/hapi")
 const HAPIPeer   = require("./hapi-plugin-peer")
 const Request    = require("request-promise")
 
@@ -23,7 +23,7 @@ const Request    = require("request-promise")
                 path:         "/",    /*  cookie validity path            */
                 domain:       null,   /*  cookie validity domain          */
                 encoding:     "none", /*  cookie value encoding           */
-                strictHeader: true,   /*  strict cookie value handling    */
+                strictHeader: true    /*  strict cookie value handling    */
             }
         }
     })

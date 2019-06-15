@@ -23,7 +23,7 @@
 */
 
 /*  external dependencies  */
-const hoek    = require("hoek")
+const hoek    = require("@hapi/hoek")
 const UUID    = require("pure-uuid")
 
 /*  internal dependencies  */
@@ -102,7 +102,7 @@ const register = async (server, options) => {
             encoding:     "none", /*  cookie value encoding           */
             strictHeader: true    /*  strict cookie value handling    */
         }
-    }, options, true)
+    }, options, { nullOverride: true })
 
     /*  support peer unique identification  */
     if (options.peerId) {
