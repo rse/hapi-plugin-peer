@@ -50,7 +50,7 @@ const peerOfRequest = (options, request) => {
             return str
         }
     }
-    let peer = new Peer()
+    const peer = new Peer()
 
     /*  fetch the peer id  */
     if (   options.peerId
@@ -132,7 +132,7 @@ const register = async (server, options) => {
         server.ext("onPreResponse", async (request, h) => {
             /*  send a new generated id to the peer  */
             if (request.plugins.peer && request.plugins.peer.sendPeerId) {
-                let peerId = request.info.peerId
+                const peerId = request.info.peerId
                 h.state(options.cookieName, peerId)
             }
             return h.continue

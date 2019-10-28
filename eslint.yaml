@@ -61,4 +61,5 @@ rules:
     curly:                               off
     space-in-parens:                     off
     no-unneeded-ternary:                 off
+    lines-between-class-members:         off
 
