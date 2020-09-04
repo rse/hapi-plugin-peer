@@ -20,7 +20,7 @@
         "@hapi/hapi":              ">=18.0.0"
     },
     "dependencies": {
-        "@hapi/hoek":              "8.5.0",
+        "@hapi/hoek":              "9.1.0",
         "pure-uuid":               "1.5.8"
     },
     "devDependencies": {
