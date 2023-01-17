@@ -154,8 +154,8 @@ const register = async (server, options) => {
 /*  export register function, wrapped in a plugin object  */
 module.exports = {
     plugin: {
-        register: register,
-        pkg:      pkg
+        register,
+        pkg
     }
 }
 
